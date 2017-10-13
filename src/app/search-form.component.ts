@@ -16,10 +16,16 @@ export class SearchFormComponent {
 		this.httpRequest('');
 	};
 
+	// image urls
 	images = [];
+	// flag: show images or error message
 	loadingSuccess = true;
+	// error message from server response
 	errorMessage = null;
 
+	// Send query to server api: 
+	// 1 key enter event and 
+	// 2 search button event
 	triggerSearch(keyword: string){
 		this.httpRequest(keyword);
 	}
