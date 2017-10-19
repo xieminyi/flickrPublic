@@ -1,14 +1,26 @@
-import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
-describe('flickr-image App', () => {
-  let page: AppPage;
+describe('Search', () => {
 
   beforeEach(() => {
-    page = new AppPage();
+    browser.get('/search');
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Flickr Public Feeds Images');
+  it('should have an input, search button, display, and error notification', () => {
+    expect(element(by.css('app-root app-search form input')).isPresent()).toEqual(true);
+    expect(element(by.css('app-root app-search form button')).isPresent()).toEqual(true);
+  });
+
+  it('should allow searching', () => {
+    const searchButton = element(by.css('button'));
+    const searchBox = element(by.css('input'));
+    searchBox.sendKeys('');
+    searchButton.click().then(() => {
+      const list = element.all(by.css('app-search .image-display .flickr-pic'));
+      expect(list.count()).toBe(0);    
+      
+    });
+
+
   });
 });

@@ -10,7 +10,7 @@ const feeds  = new Flickr.Feeds();
 var search = {
 	request: (req, res) => {
 
-		let keyword = req.body.keyword;
+		let keyword = req.query.keyword;
 
 		try{
 			if(keyword === null){ 

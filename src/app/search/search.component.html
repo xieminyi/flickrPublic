@@ -1,0 +1,22 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <input type="search" class="form-control" name="query" [(ngModel)]="query" (keyup.enter)="search()">
+    </div>
+    <button type="button" (click)="search()" class="btn btn-success">Search</button>
+  </form>
+  <br /><br />
+
+  <div class="image-display" *ngIf="loadingSuccess; else displayMessage">
+    <div class="row">
+      <div class="flickr-pic col-sm-3" *ngFor="let image of searchResults">
+        <a href="{{ image }}" target="_blank">
+          <img src="{{ image }}" class="img-thumbnail">
+        </a>
+      </div>
+    </div>
+  </div>
+  <ng-template #displayMessage class="error-message">
+    <p>{{ errorMeg }}</p>
+  </ng-template>
+</div>

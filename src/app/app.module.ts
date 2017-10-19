@@ -1,27 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-// Import HttpClientModule 
+import { SearchService } from './shared';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
-// Import templates
-import { SearchFormComponent } from './search-form.component';
-import { HeaderComponent } from './header.component';
+import { AppComponent } from './app.component';
+import { SearchComponent } from './search/search.component';
+
+const appRoutes: Routes = [
+	{path: 'search', component: SearchComponent },
+	{path: '', redirectTo: '/search', pathMatch: 'full'}
+];
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpModule,
-  ],
   declarations: [
     AppComponent,
-    SearchFormComponent,
-    HeaderComponent
+    SearchComponent
   ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpModule
+  ],
+  providers: [SearchService],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }

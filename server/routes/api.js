@@ -5,7 +5,7 @@ const router  = express.Router();
 const search  = require('./search');
 
 // Set routers
-router.post('/api', search.request);
+router.get('/api', search.request);
 
 router.get('/', (req, res) => {
   res.status(200).end();
