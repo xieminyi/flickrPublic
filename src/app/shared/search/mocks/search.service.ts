@@ -13,7 +13,7 @@ export class MockSearchService extends SpyObject {
     super( SearchService );
 
     this.fakeResponse = null;
-    this.getAllSpy = this.spy('getAll').andReturn(this);
+    this.getAllSpy = this.spy('getImages').andReturn(this);
     this.getByIdSpy = this.spy('get').andReturn(this);
     this.searchSpy = this.spy('search').andReturn(this);
     this.saveSpy = this.spy('save').andReturn(this);
